@@ -20,13 +20,13 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-20 px-4 bg-[#0f172a]/50">
+    <section id="contact" className="section-gradient-a py-20 px-4">
       <div className="max-w-2xl mx-auto text-center">
         <motion.h2
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
-          className="text-2xl sm:text-3xl font-bold text-white mb-4"
+          className="text-2xl sm:text-3xl font-bold text-white mb-4 heading-accent inline-block"
         >
           Get In Touch
         </motion.h2>
@@ -34,7 +34,7 @@ export default function Contact() {
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-gray-400 mb-10"
+          className="text-gray-400 mb-10 mt-6"
         >
           Let&apos;s build something together.
         </motion.p>
@@ -44,7 +44,7 @@ export default function Contact() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           onSubmit={handleSubmit}
-          className="rounded-xl border border-white/10 bg-[#1f2937]/80 p-6 mb-10 text-left"
+          className="rounded-xl border border-white/8 card-gradient p-6 mb-10 text-left"
         >
           <div className="space-y-4">
             <div>
@@ -58,7 +58,7 @@ export default function Contact() {
                 required
                 value={formData.name}
                 onChange={handleChange}
-                className="w-full px-4 py-2.5 rounded-lg bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500"
+                className="w-full px-4 py-2.5 rounded-lg bg-white/4 border border-white/8 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500/60 focus:shadow-[0_0_0_3px_rgba(59,130,246,0.1)] transition-all"
                 placeholder="Your name"
               />
             </div>
@@ -73,7 +73,7 @@ export default function Contact() {
                 required
                 value={formData.email}
                 onChange={handleChange}
-                className="w-full px-4 py-2.5 rounded-lg bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500"
+                className="w-full px-4 py-2.5 rounded-lg bg-white/4 border border-white/8 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500/60 focus:shadow-[0_0_0_3px_rgba(59,130,246,0.1)] transition-all"
                 placeholder="your@email.com"
               />
             </div>
@@ -88,18 +88,20 @@ export default function Contact() {
                 rows={4}
                 value={formData.message}
                 onChange={handleChange}
-                className="w-full px-4 py-2.5 rounded-lg bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 resize-none"
+                className="w-full px-4 py-2.5 rounded-lg bg-white/4 border border-white/8 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500/60 focus:shadow-[0_0_0_3px_rgba(59,130,246,0.1)] transition-all resize-none"
                 placeholder="Your message..."
               />
             </div>
           </div>
-          <button
+          <motion.button
             type="submit"
-            className="mt-4 w-full flex items-center justify-center gap-2 px-4 py-3 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-medium transition-colors"
+            whileHover={{ scale: 1.01 }}
+            whileTap={{ scale: 0.98 }}
+            className="mt-4 w-full flex items-center justify-center gap-2 px-4 py-3 rounded-lg bg-linear-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 text-white font-medium transition-all shadow-lg shadow-blue-500/20 hover:shadow-blue-500/30"
           >
             <Send size={18} />
             Send via Email
-          </button>
+          </motion.button>
         </motion.form>
 
         <motion.div
@@ -108,31 +110,25 @@ export default function Contact() {
           viewport={{ once: true }}
           className="flex items-center justify-center gap-4"
         >
-          <a
-            href="https://github.com/abhigyansinhaa"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="p-2.5 rounded-lg bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:border-blue-500/50 transition-colors"
-            aria-label="GitHub"
-          >
-            <Github size={22} />
-          </a>
-          <a
-            href="https://linkedin.com/in/abhigyansinhaa"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="p-2.5 rounded-lg bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:border-blue-500/50 transition-colors"
-            aria-label="LinkedIn"
-          >
-            <Linkedin size={22} />
-          </a>
-          <a
-            href="mailto:abhigyansinhaa@gmail.com"
-            className="p-2.5 rounded-lg bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:border-blue-500/50 transition-colors"
-            aria-label="Email"
-          >
-            <Mail size={22} />
-          </a>
+          {[
+            { href: "https://github.com/abhigyansinhaa", icon: Github, label: "GitHub", external: true },
+            { href: "https://linkedin.com/in/abhigyansinhaa", icon: Linkedin, label: "LinkedIn", external: true },
+            { href: "mailto:abhigyansinhaa@gmail.com", icon: Mail, label: "Email", external: false },
+          ].map(({ href, icon: Icon, label, external }) => (
+            <motion.a
+              key={label}
+              href={href}
+              target={external ? "_blank" : undefined}
+              rel={external ? "noopener noreferrer" : undefined}
+              whileHover={{ scale: 1.1, y: -2 }}
+              whileTap={{ scale: 0.95 }}
+              transition={{ type: "spring", stiffness: 400, damping: 17 }}
+              className="p-2.5 rounded-lg bg-white/5 border border-white/8 text-gray-400 hover:text-white hover:border-blue-500/50 transition-colors"
+              aria-label={label}
+            >
+              <Icon size={22} />
+            </motion.a>
+          ))}
         </motion.div>
       </div>
     </section>

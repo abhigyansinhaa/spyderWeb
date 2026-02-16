@@ -41,7 +41,7 @@ export default function Navbar() {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 border-b border-white/5 bg-[#0a0a0a]/80 backdrop-blur-md">
+    <header className="fixed top-0 left-0 right-0 z-50 border-b border-white/5 bg-(--surface-0)/80 backdrop-blur-md">
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 sm:px-6">
         <button
           onClick={() => scrollTo("home")}
@@ -83,7 +83,7 @@ export default function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden border-t border-white/5 bg-[#0a0a0a]/95 backdrop-blur-md overflow-hidden"
+            className="md:hidden border-t border-white/5 bg-(--surface-0)/95 backdrop-blur-md overflow-hidden"
           >
             <ul className="flex flex-col px-4 py-4 gap-2">
               {SECTIONS.map(({ id, label }) => (

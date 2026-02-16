@@ -100,7 +100,7 @@ self.__SERVER_FILES_MANIFEST={
         "transform": "lodash/{{member}}"
       }
     },
-    "outputFileTracingRoot": "C:\\Users\\KIIT0001\\Desktop\\New folder\\Bakchxxi",
+    "outputFileTracingRoot": "C:\\Users\\KIIT0001\\Desktop\\New folder\\Bakchxxi\\portfolio",
     "cacheComponents": false,
     "cacheLife": {
       "default": {
@@ -293,11 +293,11 @@ self.__SERVER_FILES_MANIFEST={
     "bundlePagesRouterDependencies": false,
     "configFileName": "next.config.ts",
     "turbopack": {
-      "root": "C:\\Users\\KIIT0001\\Desktop\\New folder\\Bakchxxi"
+      "root": "C:\\Users\\KIIT0001\\Desktop\\New folder\\Bakchxxi\\portfolio"
     },
     "distDirRoot": ".next"
   },
-  "appDir": "C:\\Users\\KIIT0001\\Desktop\\New folder\\Bakchxxi",
+  "appDir": "C:\\Users\\KIIT0001\\Desktop\\New folder\\Bakchxxi\\portfolio",
   "relativeAppDir": "",
   "files": [
     ".next\\routes-manifest.json",

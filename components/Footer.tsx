@@ -14,7 +14,7 @@ export default function Footer() {
   const scrollTo = (id: string) => document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
 
   return (
-    <footer className="border-t border-white/5 bg-[#0a0a0a] py-10 px-4">
+    <footer className="border-t border-white/5 bg-(--surface-0) py-10 px-4">
       <div className="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6 flex-wrap">
         <p className="text-gray-500 text-sm">
           © {new Date().getFullYear()} Abhigyan Sinha. All rights reserved.
@@ -31,31 +31,22 @@ export default function Footer() {
           ))}
         </nav>
         <div className="flex items-center gap-3">
-          <a
-            href="https://github.com/abhigyansinhaa"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-gray-500 hover:text-white transition-colors"
-            aria-label="GitHub"
-          >
-            <Github size={20} />
-          </a>
-          <a
-            href="https://linkedin.com/in/abhigyansinhaa"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-gray-500 hover:text-white transition-colors"
-            aria-label="LinkedIn"
-          >
-            <Linkedin size={20} />
-          </a>
-          <a
-            href="mailto:abhigyansinhaa@gmail.com"
-            className="text-gray-500 hover:text-white transition-colors"
-            aria-label="Email"
-          >
-            <Mail size={20} />
-          </a>
+          {[
+            { href: "https://github.com/abhigyansinhaa", icon: Github, label: "GitHub", external: true },
+            { href: "https://linkedin.com/in/abhigyansinhaa", icon: Linkedin, label: "LinkedIn", external: true },
+            { href: "mailto:abhigyansinhaa@gmail.com", icon: Mail, label: "Email", external: false },
+          ].map(({ href, icon: Icon, label, external }) => (
+            <a
+              key={label}
+              href={href}
+              target={external ? "_blank" : undefined}
+              rel={external ? "noopener noreferrer" : undefined}
+              className="text-gray-500 hover:text-white transition-colors"
+              aria-label={label}
+            >
+              <Icon size={20} />
+            </a>
+          ))}
         </div>
       </div>
     </footer>

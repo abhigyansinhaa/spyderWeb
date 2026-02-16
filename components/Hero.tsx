@@ -42,7 +42,14 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex flex-col items-center justify-center px-4 pt-20 pb-16 bg-linear-to-b from-[#0a0a0a] via-[#0f172a] to-[#0a0a0a] overflow-hidden"
+      className="relative min-h-screen flex flex-col items-center justify-center px-4 pt-20 pb-16 overflow-hidden"
+      style={{
+        background: `
+          radial-gradient(ellipse 80% 60% at 50% 20%, rgba(59,130,246,0.07) 0%, transparent 60%),
+          radial-gradient(ellipse 60% 40% at 70% 80%, rgba(6,182,212,0.04) 0%, transparent 50%),
+          linear-gradient(180deg, #0a0a0a 0%, #0e1117 40%, #0a0a0a 100%)
+        `,
+      }}
     >
       {/* Subtle grid background */}
       <div
@@ -65,48 +72,44 @@ export default function Hero() {
           Abhigyan Sinha
         </h1>
         <div className="min-h-8 text-xl sm:text-2xl text-gray-400 mb-8">
-          <span className="text-cyan-400/90">{displayText}</span>
-          <span className="animate-pulse">|</span>
+          <span className="text-transparent bg-clip-text bg-linear-to-r from-cyan-400 to-blue-400">{displayText}</span>
+          <span className="animate-pulse text-cyan-400/90">|</span>
         </div>
         <p className="text-gray-400 text-base sm:text-lg mb-10 max-w-xl mx-auto">
           B.Tech in Computer Science at KIIT. Building data pipelines, ML models, and cloud solutions.
         </p>
 
         <div className="flex items-center justify-center gap-4 mb-10">
-          <a
-            href="https://github.com/abhigyansinhaa"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="p-2.5 rounded-lg bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:border-blue-500/50 hover:bg-white/10 transition-colors"
-            aria-label="GitHub"
-          >
-            <Github size={22} />
-          </a>
-          <a
-            href="https://linkedin.com/in/abhigyansinhaa"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="p-2.5 rounded-lg bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:border-blue-500/50 hover:bg-white/10 transition-colors"
-            aria-label="LinkedIn"
-          >
-            <Linkedin size={22} />
-          </a>
-          <a
-            href="mailto:abhigyansinhaa@gmail.com"
-            className="p-2.5 rounded-lg bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:border-blue-500/50 hover:bg-white/10 transition-colors"
-            aria-label="Email"
-          >
-            <Mail size={22} />
-          </a>
+          {[
+            { href: "https://github.com/abhigyansinhaa", icon: Github, label: "GitHub", external: true },
+            { href: "https://linkedin.com/in/abhigyansinhaa", icon: Linkedin, label: "LinkedIn", external: true },
+            { href: "mailto:abhigyansinhaa@gmail.com", icon: Mail, label: "Email", external: false },
+          ].map(({ href, icon: Icon, label, external }) => (
+            <motion.a
+              key={label}
+              href={href}
+              target={external ? "_blank" : undefined}
+              rel={external ? "noopener noreferrer" : undefined}
+              whileHover={{ scale: 1.1, y: -2 }}
+              whileTap={{ scale: 0.95 }}
+              transition={{ type: "spring", stiffness: 400, damping: 17 }}
+              className="p-2.5 rounded-lg bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:border-blue-500/50 hover:bg-white/10 transition-colors"
+              aria-label={label}
+            >
+              <Icon size={22} />
+            </motion.a>
+          ))}
         </div>
 
-        <button
+        <motion.button
           onClick={scrollToProjects}
-          className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-medium transition-colors"
+          whileHover={{ scale: 1.03 }}
+          whileTap={{ scale: 0.97 }}
+          className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-linear-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 text-white font-medium transition-all shadow-lg shadow-blue-500/20 hover:shadow-blue-500/30"
         >
           View My Work
           <ChevronDown size={18} />
-        </button>
+        </motion.button>
       </motion.div>
 
       <motion.div
@@ -117,7 +120,7 @@ export default function Hero() {
       >
         <button
           onClick={() => document.getElementById("about")?.scrollIntoView({ behavior: "smooth" })}
-          className="text-gray-500 hover:text-gray-400 transition-colors"
+          className="text-gray-500 hover:text-gray-400 transition-colors animate-bounce"
           aria-label="Scroll down"
         >
           <ChevronDown size={28} />
