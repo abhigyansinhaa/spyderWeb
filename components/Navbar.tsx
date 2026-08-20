@@ -5,9 +5,9 @@ import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const SECTIONS = [
-  { id: "home", label: "Overview" },
-  { id: "work", label: "Selected Work" },
-  { id: "contact", label: "Contact" },
+  { id: "home", label: "OVERVIEW" },
+  { id: "work", label: "SELECTED WORK" },
+  { id: "contact", label: "CONTACT" },
 ];
 
 export default function Navbar() {
@@ -52,7 +52,7 @@ export default function Navbar() {
         <nav className="mx-auto flex max-w-6xl items-center justify-between px-5 py-3.5 sm:px-8">
           <button
             onClick={() => scrollTo("home")}
-            className="font-editorial italic text-xl font-normal text-[#fdfcfb] hover:text-[#d97736] transition-colors"
+            className="font-editorial italic text-xl font-normal text-[#fdfcfb] hover:text-[#d97736] transition-colors tracking-tight"
           >
             Abhigyan Sinha
           </button>
@@ -63,8 +63,8 @@ export default function Navbar() {
               <li key={id}>
                 <button
                   onClick={() => scrollTo(id)}
-                  className={`text-xs font-mono tracking-wide transition-colors ${
-                    activeSection === id ? "text-[#d97736]" : "text-[#a6a094] hover:text-[#fdfcfb]"
+                  className={`text-[11px] font-mono tracking-widest uppercase transition-colors ${
+                    activeSection === id ? "text-[#d97736] font-medium" : "text-[#a6a094] hover:text-[#fdfcfb]"
                   }`}
                 >
                   {label}
@@ -75,9 +75,9 @@ export default function Navbar() {
               <a
                 href="/resume.pdf"
                 download
-                className="text-xs font-mono px-3 py-1.5 rounded bg-[#151513] hover:bg-[#1c1c1a] border border-[#e8e4de]/[0.08] hover:border-[#d97736]/40 text-[#e8e4de] transition-colors"
+                className="text-[11px] font-mono tracking-wider uppercase px-3 py-1.5 rounded bg-[#151513] hover:bg-[#1c1c1a] border border-[#e8e4de]/[0.08] hover:border-[#d97736]/40 text-[#e8e4de] transition-colors"
               >
-                Resume
+                Resume ↗
               </a>
             </li>
           </ul>
@@ -107,7 +107,7 @@ export default function Navbar() {
                 <li key={id}>
                   <button
                     onClick={() => scrollTo(id)}
-                    className={`block w-full text-left py-2 text-xs font-mono transition-colors ${
+                    className={`block w-full text-left py-2 text-xs font-mono uppercase tracking-widest transition-colors ${
                       activeSection === id ? "text-[#d97736]" : "text-[#a6a094] hover:text-[#fdfcfb]"
                     }`}
                   >

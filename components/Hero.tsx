@@ -7,11 +7,11 @@ import { motion } from "framer-motion";
 const TYPING_PHRASES = [
   "Applied Machine Learning",
   "Explainable AI Systems",
-  "Data & Cloud Architectures",
+  "Diagnostic & Predictive Models",
 ];
-const TYPING_DELAY = 70;
-const PAUSE_AFTER_PHRASE = 2200;
-const DELETE_DELAY = 35;
+const TYPING_DELAY = 65;
+const PAUSE_AFTER_PHRASE = 2400;
+const DELETE_DELAY = 30;
 
 export default function Hero() {
   const [phraseIndex, setPhraseIndex] = useState(0);

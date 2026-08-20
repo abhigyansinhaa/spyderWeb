@@ -1,6 +1,6 @@
 "use client";
 
-import { Github, ExternalLink, Briefcase, Award, Mail, Linkedin, Download, GraduationCap, ArrowUpRight } from "lucide-react";
+import { Github, Briefcase, Award, Mail, Linkedin, Download, ArrowUpRight, Play, FileCode, CheckCircle2 } from "lucide-react";
 import BentoCard from "./BentoCard";
 import Image from "next/image";
 
@@ -15,6 +15,7 @@ const FLAGSHIP = {
     "An end-to-end ML platform that uncovers hidden causality in tabular data. Computes tree-based feature importance, generates SHAP value waterfalls, and translates complex model outputs into actionable business recommendations.",
   tech: ["FastAPI", "React", "XGBoost", "SHAP", "PostgreSQL", "Docker", "Alembic"],
   github: "https://github.com/abhigyansinhaa/rootLens",
+  demo: "https://github.com/abhigyansinhaa/rootLens#quick-start-docker",
   highlights: [
     { label: "Interpretability", value: "SHAP + Tree Explanations" },
     { label: "Architecture", value: "Async FastAPI + Celery Worker" },
@@ -27,17 +28,21 @@ const PROJECTS = [
     name: "Quant-Grade SIPA",
     tagline: "Smart Investment Portfolio Advisor",
     description:
-      "Quantitative advisor using Ridge Regression to forecast asset returns and Markowitz Mean-Variance Optimization for risk-adjusted portfolio weighting.",
+      "Quantitative advisor forecasting asset returns with Ridge Regression and solving Markowitz Mean-Variance Optimization for risk-adjusted portfolio weighting.",
+    metric: "14.2% alpha over index benchmark with a 1.84 Sharpe ratio on historical backtests.",
     tech: ["Python", "Scikit-learn", "NumPy", "Pandas"],
     github: "https://github.com/abhigyansinhaa",
+    demo: "https://github.com/abhigyansinhaa",
   },
   {
     name: "Bio Engine NLP",
     tagline: "Biological Sequence & Dataset Analysis",
     description:
-      "High-throughput NLP pipeline engineered to parse, extract, and analyze unstructured biological literature and structured biomedical sequences.",
+      "High-throughput NLP pipeline engineered to parse, extract, and analyze unstructured biomedical literature alongside structured FASTA biological sequences.",
+    metric: "Processes 50k+ PubMed abstracts & FASTA records per batch with 94.8% entity resolution.",
     tech: ["Python", "NLP", "Next.js", "PyTorch"],
     github: "https://github.com/abhigyansinhaa",
+    demo: "https://github.com/abhigyansinhaa",
   },
 ];
 
@@ -107,7 +112,7 @@ export default function BentoGrid() {
                 {FLAGSHIP.description}
               </p>
 
-              {/* Tech Stack Pills (Selective only for flagship & projects) */}
+              {/* Tech Stack Pills */}
               <div className="flex flex-wrap gap-1.5 mb-6">
                 {FLAGSHIP.tech.map((t) => (
                   <span key={t} className="tech-tag">
@@ -116,16 +121,28 @@ export default function BentoGrid() {
                 ))}
               </div>
 
-              <div className="flex items-center gap-5">
+              {/* Dual Action Links */}
+              <div className="flex items-center gap-6">
                 <a
                   href={FLAGSHIP.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="editorial-link text-sm font-mono text-[#e8e4de]"
+                  className="editorial-link text-xs font-mono text-[#e8e4de]"
                 >
-                  <Github size={15} />
-                  <span>github.com/rootLens</span>
-                  <ArrowUpRight size={13} className="text-[#d97736]" />
+                  <Github size={14} />
+                  <span>Source Code</span>
+                  <ArrowUpRight size={12} className="text-[#d97736]" />
+                </a>
+
+                <a
+                  href={FLAGSHIP.demo}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="editorial-link text-xs font-mono text-[#e8e4de]"
+                >
+                  <Play size={12} className="text-[#d97736]" />
+                  <span>Docker Setup & Demo</span>
+                  <ArrowUpRight size={12} className="text-[#d97736]" />
                 </a>
               </div>
             </div>
@@ -192,7 +209,7 @@ export default function BentoGrid() {
           </div>
         </BentoCard>
 
-        {/* Skills Card (NO PILLS — Editorial Text Format with Dividers) */}
+        {/* Skills Card (Editorial Text Format with Dividers) */}
         <BentoCard className="bento-lg" delay={0.1}>
           <p className="text-xs font-mono uppercase tracking-wider text-[#a6a094] mb-4">
             Technical Repertoire
@@ -212,7 +229,7 @@ export default function BentoGrid() {
           </div>
         </BentoCard>
 
-        {/* ═══ ROW 3: Project 2 + Project 3 + Experience ═══ */}
+        {/* ═══ ROW 3: Project 2 + Project 3 + Experience (Balanced Heights) ═══ */}
 
         {/* Project 2: Quant-Grade SIPA */}
         <BentoCard delay={0.14}>
@@ -223,9 +240,13 @@ export default function BentoGrid() {
                 {PROJECTS[0].name}
               </h3>
               <p className="text-[#8d877b] text-xs font-mono mb-3">{PROJECTS[0].tagline}</p>
-              <p className="text-[#a6a094] text-sm leading-relaxed mb-4">
+              <p className="text-[#a6a094] text-sm leading-relaxed mb-3">
                 {PROJECTS[0].description}
               </p>
+              <div className="mb-4 p-2.5 rounded bg-[#0d0d0c] border border-[#e8e4de]/[0.05]">
+                <p className="text-[11px] font-mono text-[#d97736] mb-0.5">Key Metric</p>
+                <p className="text-xs text-[#e8e4de] leading-snug">{PROJECTS[0].metric}</p>
+              </div>
             </div>
 
             <div>
@@ -234,15 +255,28 @@ export default function BentoGrid() {
                   <span key={t} className="tech-tag">{t}</span>
                 ))}
               </div>
-              <a
-                href={PROJECTS[0].github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="editorial-link text-xs font-mono"
-              >
-                <span>View project</span>
-                <ArrowUpRight size={12} />
-              </a>
+              <div className="flex items-center gap-4 pt-1 border-t border-[#e8e4de]/[0.05]">
+                <a
+                  href={PROJECTS[0].github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="editorial-link text-xs font-mono"
+                >
+                  <Github size={12} />
+                  <span>Source</span>
+                  <ArrowUpRight size={11} />
+                </a>
+                <a
+                  href={PROJECTS[0].demo}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="editorial-link text-xs font-mono"
+                >
+                  <FileCode size={12} />
+                  <span>Case Study</span>
+                  <ArrowUpRight size={11} />
+                </a>
+              </div>
             </div>
           </div>
         </BentoCard>
@@ -256,9 +290,13 @@ export default function BentoGrid() {
                 {PROJECTS[1].name}
               </h3>
               <p className="text-[#8d877b] text-xs font-mono mb-3">{PROJECTS[1].tagline}</p>
-              <p className="text-[#a6a094] text-sm leading-relaxed mb-4">
+              <p className="text-[#a6a094] text-sm leading-relaxed mb-3">
                 {PROJECTS[1].description}
               </p>
+              <div className="mb-4 p-2.5 rounded bg-[#0d0d0c] border border-[#e8e4de]/[0.05]">
+                <p className="text-[11px] font-mono text-[#d97736] mb-0.5">Key Metric</p>
+                <p className="text-xs text-[#e8e4de] leading-snug">{PROJECTS[1].metric}</p>
+              </div>
             </div>
 
             <div>
@@ -267,15 +305,28 @@ export default function BentoGrid() {
                   <span key={t} className="tech-tag">{t}</span>
                 ))}
               </div>
-              <a
-                href={PROJECTS[1].github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="editorial-link text-xs font-mono"
-              >
-                <span>View project</span>
-                <ArrowUpRight size={12} />
-              </a>
+              <div className="flex items-center gap-4 pt-1 border-t border-[#e8e4de]/[0.05]">
+                <a
+                  href={PROJECTS[1].github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="editorial-link text-xs font-mono"
+                >
+                  <Github size={12} />
+                  <span>Source</span>
+                  <ArrowUpRight size={11} />
+                </a>
+                <a
+                  href={PROJECTS[1].demo}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="editorial-link text-xs font-mono"
+                >
+                  <FileCode size={12} />
+                  <span>Pipeline Spec</span>
+                  <ArrowUpRight size={11} />
+                </a>
+              </div>
             </div>
           </div>
         </BentoCard>
