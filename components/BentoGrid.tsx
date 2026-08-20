@@ -33,8 +33,8 @@ const PROJECTS = [
       "Full-stack financial SaaS providing real-time visibility into burn rate, runway, and cash position via versioned REST API (/api/v1).",
     metric: "7/14/30-day Ridge Regression forecasts, what-if scenario simulator, and LLM advisor with offline fallback.",
     tech: ["Python", "Flask", "MySQL", "Scikit-learn", "SQLAlchemy"],
-    github: "https://github.com/abhigyansinhaa",
-    demo: "https://github.com/abhigyansinhaa",
+    github: "https://github.com/abhigyansinhaa/SMERiskAnalysis",
+    demo: "https://github.com/abhigyansinhaa/SMERiskAnalysis",
   },
   {
     name: "Bio Engine NLP",
@@ -43,8 +43,8 @@ const PROJECTS = [
       "Two-layer retrieval system over 500+ space-biology papers combining FAISS semantic search and Gemini relation extraction into a queryable knowledge graph.",
     metric: "Sub-second semantic lookup with checkpointed resumption, retry-with-backoff, and deduplication.",
     tech: ["Python", "RAG Systems", "FAISS", "Sentence-Transformers", "Gemini API"],
-    github: "https://github.com/abhigyansinhaa",
-    demo: "https://github.com/abhigyansinhaa",
+    github: "https://github.com/abhigyansinhaa/Bio-Engine",
+    demo: "https://space-bio-explorer.vercel.app/",
   },
 ];
 
