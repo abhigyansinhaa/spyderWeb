@@ -1,6 +1,7 @@
 "use client";
 
-import { Github, Briefcase, Award, Mail, Linkedin, Download, ArrowUpRight, Play, FileCode, Server, Terminal, Database, Sparkles } from "lucide-react";
+import { useState } from "react";
+import { Github, Briefcase, Award, Mail, Linkedin, Download, ArrowUpRight, Play, FileCode, Send, MessageSquare } from "lucide-react";
 import BentoCard from "./BentoCard";
 import Image from "next/image";
 
@@ -100,6 +101,16 @@ const CERTS = [
    ──────────────────────────────────────────── */
 
 export default function BentoGrid() {
+  const [directNote, setDirectNote] = useState("");
+
+  const handleSendDirectNote = (e: React.FormEvent) => {
+    e.preventDefault();
+    const note = directNote.trim() || "Hi Abhigyan, I saw your portfolio and would like to connect!";
+    const subject = encodeURIComponent("Connecting via Portfolio");
+    const body = encodeURIComponent(note);
+    window.location.href = `mailto:abhigyansinhaa@gmail.com?subject=${subject}&body=${body}`;
+  };
+
   return (
     <section id="work" className="bento-section">
       <div className="bento-grid">
@@ -430,47 +441,102 @@ export default function BentoGrid() {
           </div>
         </BentoCard>
 
-        {/* ═══ ROW 6: Contact & Resume CTA ═══ */}
+        {/* ═══ ROW 6: Direct Message Text Box (No Forms, Instant Direct Action) ═══ */}
         <BentoCard className="bento-full" delay={0.32} id="contact">
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-6 py-2">
-            <div>
-              <h3 className="font-editorial text-2xl sm:text-3xl text-[#fdfcfb] font-normal mb-1">
-                Let&apos;s build something meaningful.
+          <div className="flex flex-col lg:flex-row gap-8 justify-between items-start">
+            
+            {/* Left Column: Contact Header & Information */}
+            <div className="max-w-md">
+              <div className="flex items-center gap-2 mb-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#d97736]"></span>
+                <p className="text-xs font-mono uppercase tracking-wider text-[#d97736] font-semibold">
+                  Direct Contact
+                </p>
+              </div>
+
+              <h3 className="font-editorial text-3xl sm:text-4xl text-[#fdfcfb] font-normal mb-2 leading-tight">
+                Let&apos;s talk.
               </h3>
-              <p className="text-sm text-[#a6a094]">
-                Available for AI/ML Engineering opportunities · +91 94731-54146 · abhigyansinhaa@gmail.com
+              
+              <p className="text-sm text-[#a6a094] leading-relaxed mb-5">
+                Drop a quick note, project inquiry, or role details in the box — clicking send opens directly in your email client.
               </p>
-            </div>
 
-            <div className="flex items-center gap-3 shrink-0 flex-wrap">
-              <a
-                href="/resume.pdf"
-                download
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-md bg-[#d97736] hover:bg-[#e88748] text-[#0d0d0c] font-semibold text-sm transition-colors shadow-md"
-              >
-                <Download size={15} strokeWidth={2.5} />
-                <span>Resume PDF</span>
-              </a>
+              <div className="flex flex-wrap items-center gap-3 text-xs font-mono text-[#8d877b] mb-5">
+                <a href="mailto:abhigyansinhaa@gmail.com" className="hover:text-[#d97736] transition-colors">
+                  abhigyansinhaa@gmail.com
+                </a>
+                <span>·</span>
+                <a href="tel:+919473154146" className="hover:text-[#d97736] transition-colors">
+                  +91 94731-54146
+                </a>
+              </div>
 
-              <div className="flex items-center gap-2">
-                {[
-                  { href: "https://github.com/abhigyansinhaa", icon: Github, label: "GitHub" },
-                  { href: "https://linkedin.com/in/abhigyansinhaa", icon: Linkedin, label: "LinkedIn" },
-                  { href: "mailto:abhigyansinhaa@gmail.com", icon: Mail, label: "Email" },
-                ].map(({ href, icon: Icon, label }) => (
-                  <a
-                    key={label}
-                    href={href}
-                    target={label !== "Email" ? "_blank" : undefined}
-                    rel={label !== "Email" ? "noopener noreferrer" : undefined}
-                    className="p-2.5 rounded-md bg-[#0d0d0c] hover:bg-[#1c1c1a] border border-[#e8e4de]/[0.08] hover:border-[#d97736]/40 text-[#a6a094] hover:text-[#e8e4de] transition-colors"
-                    aria-label={label}
-                  >
-                    <Icon size={17} />
-                  </a>
-                ))}
+              <div className="flex items-center gap-3">
+                <a
+                  href="/resume.pdf"
+                  download
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-md bg-[#151513] hover:bg-[#1c1c1a] border border-[#e8e4de]/[0.08] hover:border-[#d97736]/40 text-[#e8e4de] text-xs font-mono transition-colors"
+                >
+                  <Download size={13} strokeWidth={2} />
+                  <span>Resume PDF</span>
+                </a>
+
+                <div className="flex items-center gap-1.5">
+                  {[
+                    { href: "https://github.com/abhigyansinhaa", icon: Github, label: "GitHub" },
+                    { href: "https://linkedin.com/in/abhigyansinhaa", icon: Linkedin, label: "LinkedIn" },
+                    { href: "mailto:abhigyansinhaa@gmail.com", icon: Mail, label: "Email" },
+                  ].map(({ href, icon: Icon, label }) => (
+                    <a
+                      key={label}
+                      href={href}
+                      target={label !== "Email" ? "_blank" : undefined}
+                      rel={label !== "Email" ? "noopener noreferrer" : undefined}
+                      className="p-2 rounded-md bg-[#0d0d0c] hover:bg-[#1c1c1a] border border-[#e8e4de]/[0.08] hover:border-[#d97736]/40 text-[#a6a094] hover:text-[#e8e4de] transition-colors"
+                      aria-label={label}
+                    >
+                      <Icon size={15} />
+                    </a>
+                  ))}
+                </div>
               </div>
             </div>
+
+            {/* Right Column: Direct Text Box */}
+            <div className="w-full lg:w-[480px] shrink-0">
+              <form onSubmit={handleSendDirectNote} className="flex flex-col gap-3">
+                <div className="relative">
+                  <textarea
+                    value={directNote}
+                    onChange={(e) => setDirectNote(e.target.value)}
+                    placeholder="Type your message here... (e.g. Hi Abhigyan, let's discuss an ML role / project)"
+                    rows={4}
+                    className="w-full bg-[#0d0d0c] border border-[#e8e4de]/[0.08] focus:border-[#d97736]/60 rounded-lg p-3.5 text-sm text-[#e8e4de] placeholder-[#8d877b] focus:outline-none transition-colors resize-none font-sans"
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter" && (e.metaKey || e.ctrlKey)) {
+                        handleSendDirectNote(e);
+                      }
+                    }}
+                  />
+                </div>
+
+                <div className="flex items-center justify-between gap-3">
+                  <span className="text-[11px] font-mono text-[#8d877b]">
+                    Press ⌘+Enter / Ctrl+Enter to send
+                  </span>
+                  
+                  <button
+                    type="submit"
+                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-md bg-[#d97736] hover:bg-[#e88748] text-[#0d0d0c] font-semibold text-xs font-mono transition-colors shadow-sm cursor-pointer"
+                  >
+                    <Send size={13} strokeWidth={2.5} />
+                    <span>Send Message</span>
+                  </button>
+                </div>
+              </form>
+            </div>
+
           </div>
         </BentoCard>
 
