@@ -1,79 +1,97 @@
 "use client";
 
-import { Github, Briefcase, Award, Mail, Linkedin, Download, ArrowUpRight, Play, FileCode, CheckCircle2 } from "lucide-react";
+import { Github, Briefcase, Award, Mail, Linkedin, Download, ArrowUpRight, Play, FileCode, Server, Terminal, Database, Sparkles } from "lucide-react";
 import BentoCard from "./BentoCard";
 import Image from "next/image";
 
 /* ────────────────────────────────────────────
-   DATA
+   RESUME DATA
    ──────────────────────────────────────────── */
 
 const FLAGSHIP = {
-  name: "rootLens",
-  tagline: "Explainable Machine Learning & Root-Cause Analytics",
+  name: "RootLens",
+  tagline: "Explainable Machine Learning & Causal Driver Platform",
   description:
-    "An end-to-end ML platform that uncovers hidden causality in tabular data. Computes tree-based feature importance, generates SHAP value waterfalls, and translates complex model outputs into actionable business recommendations.",
-  tech: ["FastAPI", "React", "XGBoost", "SHAP", "PostgreSQL", "Docker", "Alembic"],
+    "Full-stack ML platform auto-routing tabular datasets to XGBoost, Random Forest, or Elastic Net. Replaces black-box predictions with SHAP driver attributions and business KPI layers (Pareto concentration, counterfactual rollups).",
+  tech: ["Python", "FastAPI", "XGBoost", "SHAP", "React", "Docker", "Redis / RQ", "MySQL"],
   github: "https://github.com/abhigyansinhaa/rootLens",
   demo: "https://github.com/abhigyansinhaa/rootLens#quick-start-docker",
   highlights: [
-    { label: "Interpretability", value: "SHAP + Tree Explanations" },
-    { label: "Architecture", value: "Async FastAPI + Celery Worker" },
-    { label: "Deployment", value: "Containerized Docker Compose" },
+    { label: "Pipeline", value: "Async Redis + RQ Task Queue" },
+    { label: "Explainability", value: "SHAP Driver & Counterfactuals" },
+    { label: "Architecture", value: "JWT REST API (10+ endpoints)" },
   ],
 };
 
 const PROJECTS = [
   {
-    name: "Quant-Grade SIPA",
-    tagline: "Smart Investment Portfolio Advisor",
+    name: "SME Cashflow & Risk Advisor",
+    tagline: "Financial Forecasting & AI Risk Simulation",
     description:
-      "Quantitative advisor forecasting asset returns with Ridge Regression and solving Markowitz Mean-Variance Optimization for risk-adjusted portfolio weighting.",
-    metric: "14.2% alpha over index benchmark with a 1.84 Sharpe ratio on historical backtests.",
-    tech: ["Python", "Scikit-learn", "NumPy", "Pandas"],
+      "Full-stack financial SaaS providing real-time visibility into burn rate, runway, and cash position via versioned REST API (/api/v1).",
+    metric: "7/14/30-day Ridge Regression forecasts, what-if scenario simulator, and LLM advisor with offline fallback.",
+    tech: ["Python", "Flask", "MySQL", "Scikit-learn", "SQLAlchemy"],
     github: "https://github.com/abhigyansinhaa",
     demo: "https://github.com/abhigyansinhaa",
   },
   {
     name: "Bio Engine NLP",
-    tagline: "Biological Sequence & Dataset Analysis",
+    tagline: "Biomedical RAG & Knowledge Graph Engine",
     description:
-      "High-throughput NLP pipeline engineered to parse, extract, and analyze unstructured biomedical literature alongside structured FASTA biological sequences.",
-    metric: "Processes 50k+ PubMed abstracts & FASTA records per batch with 94.8% entity resolution.",
-    tech: ["Python", "NLP", "Next.js", "PyTorch"],
+      "Two-layer retrieval system over 500+ space-biology papers combining FAISS semantic search and Gemini relation extraction into a queryable knowledge graph.",
+    metric: "Sub-second semantic lookup with checkpointed resumption, retry-with-backoff, and deduplication.",
+    tech: ["Python", "RAG Systems", "FAISS", "Sentence-Transformers", "Gemini API"],
     github: "https://github.com/abhigyansinhaa",
     demo: "https://github.com/abhigyansinhaa",
   },
 ];
 
-const SKILL_SECTIONS = [
+const EXPERIENCES = [
   {
-    category: "ML & Data Science",
-    items: "Python · PyTorch · Scikit-learn · Pandas · NumPy · SQL · XGBoost · SHAP",
+    role: "AI Engineer Intern",
+    company: "Central Warehousing Corporation (CWC)",
+    division: "MIS Division",
+    period: "May 2026 – June 2026",
+    bullets: [
+      "Cut query response time by 95%+ (45s → under 2s) on CPU-only infrastructure via Depot Darpan AI combining XGBoost forecasting, LangChain/BGE-M3 RAG, and semantic caching.",
+      "Prevented 3 production-breaking bugs by designing a 6-layer audit, and stress-tested pipeline against a 50-depot benchmark pre-launch.",
+    ],
   },
   {
-    category: "AI & LLM Engineering",
-    items: "LangChain · Vector DBs · RAG Pipelines · Prompt Eng · PEFT / LoRA · Embeddings",
-  },
-  {
-    category: "Systems & Cloud",
-    items: "FastAPI · Docker · AWS (EC2/S3/RDS) · Git · Postgres · Next.js · Linux",
+    role: "Machine Learning Intern",
+    company: "Centre for Railway Information Systems (CRIS)",
+    division: "Logistics Operations",
+    period: "May 2025 – June 2025",
+    bullets: [
+      "Boosted delay-prediction accuracy by 18% via Bayesian hyperparameter optimization and feature engineering on a 250k+ record dataset.",
+      "Replaced manual wagon-placement with a production ML model adopted by operations, retiring a legacy heuristic workflow.",
+    ],
   },
 ];
 
-const EXPERIENCE = {
-  role: "Data Analyst Intern",
-  company: "Centre for Railway Information Systems (CRIS)",
-  period: "May 2025 – June 2025",
-  bullets: [
-    "Developed XGBoost models for railway rake delay forecasting, boosting accuracy by 18%.",
-    "Engineered interactive telemetry dashboards to track placement bottlenecks across freight hubs.",
-  ],
-};
+const SKILL_SECTIONS = [
+  {
+    category: "Data & Machine Learning",
+    items: "Python · Pandas · NumPy · Scikit-learn · FAISS · HuggingFace · LangChain · XGBoost · SHAP · Feature Eng",
+  },
+  {
+    category: "Backend & Systems",
+    items: "FastAPI · Flask · Django · REST APIs · SQLAlchemy ORM · Redis / RQ · JWT Auth · System Design",
+  },
+  {
+    category: "Cloud, DevOps & Databases",
+    items: "AWS (EC2, S3, IAM, RDS) · Docker · Git · PostgreSQL · MySQL · SQLite · Next.js · React",
+  },
+  {
+    category: "Languages",
+    items: "Python · SQL · Java · C · C++",
+  },
+];
 
 const CERTS = [
-  { name: "AWS Cloud Foundations", issuer: "AWS Academy" },
-  { name: "AWS Cloud Architecting", issuer: "AWS Academy" },
+  { name: "AWS Academy Cloud Foundations", issuer: "AWS Academy" },
+  { name: "AWS Academy ML Foundations", issuer: "AWS Academy" },
+  { name: "AWS Academy Cloud Architecting", issuer: "AWS Academy" },
   { name: "AWS Data Engineering", issuer: "AWS Academy" },
 ];
 
@@ -97,7 +115,7 @@ export default function BentoGrid() {
                   Flagship Project
                 </span>
                 <span className="text-[#a6a094]/40">/</span>
-                <span className="text-[11px] font-mono text-[#a6a094]">Full-Stack ML</span>
+                <span className="text-[11px] font-mono text-[#a6a094]">Full-Stack ML & Explainability</span>
               </div>
 
               <h2 className="font-editorial text-3xl sm:text-4xl text-[#fdfcfb] font-normal mb-2 leading-tight">
@@ -184,10 +202,10 @@ export default function BentoGrid() {
                 Background
               </p>
               <h3 className="font-editorial text-2xl text-[#fdfcfb] font-normal mb-3">
-                Engineering with causality & scale.
+                Applied AI, RAG & production systems.
               </h3>
               <p className="text-[#a6a094] text-sm leading-relaxed mb-4">
-                Computer Science student focused on applied machine learning, predictive modeling, and cloud systems. Interested in models that are both performant and interpretable.
+                CS student at KIIT with engineering experience across national logistics (CRIS, CWC). Focused on latency-optimized RAG pipelines, explainable ML models, and scalable asynchronous backends.
               </p>
             </div>
 
@@ -203,7 +221,7 @@ export default function BentoGrid() {
               </div>
               <div>
                 <p className="text-[#e8e4de] text-sm font-medium">Abhigyan Sinha</p>
-                <p className="text-[#8d877b] text-xs font-mono">B.Tech CS · KIIT (9.1 CGPA)</p>
+                <p className="text-[#8d877b] text-xs font-mono">B.Tech CS · KIIT (9.11 CGPA)</p>
               </div>
             </div>
           </div>
@@ -215,7 +233,7 @@ export default function BentoGrid() {
             Technical Repertoire
           </p>
 
-          <div className="space-y-4">
+          <div className="space-y-3.5">
             {SKILL_SECTIONS.map((sec) => (
               <div key={sec.category} className="pb-3 border-b border-[#e8e4de]/[0.04] last:border-0 last:pb-0">
                 <p className="text-xs font-mono text-[#d97736] mb-1 font-medium">
@@ -229,13 +247,13 @@ export default function BentoGrid() {
           </div>
         </BentoCard>
 
-        {/* ═══ ROW 3: Project 2 + Project 3 + Experience (Balanced Heights) ═══ */}
+        {/* ═══ ROW 3: Secondary Projects (2 Col) ═══ */}
 
-        {/* Project 2: Quant-Grade SIPA */}
+        {/* Project 2: SME Cashflow & Risk Advisor */}
         <BentoCard delay={0.14}>
           <div className="flex flex-col h-full justify-between">
             <div>
-              <p className="text-xs font-mono text-[#d97736] mb-1">Quantitative ML</p>
+              <p className="text-xs font-mono text-[#d97736] mb-1">Financial ML & SaaS</p>
               <h3 className="font-editorial text-2xl text-[#fdfcfb] font-normal mb-1">
                 {PROJECTS[0].name}
               </h3>
@@ -244,7 +262,7 @@ export default function BentoGrid() {
                 {PROJECTS[0].description}
               </p>
               <div className="mb-4 p-2.5 rounded bg-[#0d0d0c] border border-[#e8e4de]/[0.05]">
-                <p className="text-[11px] font-mono text-[#d97736] mb-0.5">Key Metric</p>
+                <p className="text-[11px] font-mono text-[#d97736] mb-0.5">Core Innovation</p>
                 <p className="text-xs text-[#e8e4de] leading-snug">{PROJECTS[0].metric}</p>
               </div>
             </div>
@@ -273,7 +291,7 @@ export default function BentoGrid() {
                   className="editorial-link text-xs font-mono"
                 >
                   <FileCode size={12} />
-                  <span>Case Study</span>
+                  <span>Architecture</span>
                   <ArrowUpRight size={11} />
                 </a>
               </div>
@@ -285,7 +303,7 @@ export default function BentoGrid() {
         <BentoCard delay={0.18}>
           <div className="flex flex-col h-full justify-between">
             <div>
-              <p className="text-xs font-mono text-[#d97736] mb-1">NLP & Bio Data</p>
+              <p className="text-xs font-mono text-[#d97736] mb-1">Biomedical RAG & Knowledge Graphs</p>
               <h3 className="font-editorial text-2xl text-[#fdfcfb] font-normal mb-1">
                 {PROJECTS[1].name}
               </h3>
@@ -294,7 +312,7 @@ export default function BentoGrid() {
                 {PROJECTS[1].description}
               </p>
               <div className="mb-4 p-2.5 rounded bg-[#0d0d0c] border border-[#e8e4de]/[0.05]">
-                <p className="text-[11px] font-mono text-[#d97736] mb-0.5">Key Metric</p>
+                <p className="text-[11px] font-mono text-[#d97736] mb-0.5">Core Innovation</p>
                 <p className="text-xs text-[#e8e4de] leading-snug">{PROJECTS[1].metric}</p>
               </div>
             </div>
@@ -323,7 +341,7 @@ export default function BentoGrid() {
                   className="editorial-link text-xs font-mono"
                 >
                   <FileCode size={12} />
-                  <span>Pipeline Spec</span>
+                  <span>Live Pipeline</span>
                   <ArrowUpRight size={11} />
                 </a>
               </div>
@@ -331,21 +349,25 @@ export default function BentoGrid() {
           </div>
         </BentoCard>
 
-        {/* Experience Card: CRIS */}
+        {/* ═══ ROW 4: Experience Cards (2 Columns for CWC and CRIS) ═══ */}
+        
+        {/* Experience 1: CWC */}
         <BentoCard delay={0.22}>
           <div className="flex flex-col h-full justify-between">
             <div>
-              <div className="flex items-center gap-1.5 text-xs font-mono text-[#d97736] mb-2">
-                <Briefcase size={13} />
-                <span className="uppercase tracking-wider">Experience</span>
+              <div className="flex items-center justify-between gap-2 mb-2">
+                <div className="flex items-center gap-1.5 text-xs font-mono text-[#d97736]">
+                  <Briefcase size={13} />
+                  <span className="uppercase tracking-wider">AI Engineering</span>
+                </div>
+                <span className="text-[11px] font-mono text-[#8d877b]">{EXPERIENCES[0].period}</span>
               </div>
 
-              <h3 className="text-base font-semibold text-[#fdfcfb]">{EXPERIENCE.role}</h3>
-              <p className="text-sm text-[#e8e4de]/80 font-medium mb-0.5">{EXPERIENCE.company}</p>
-              <p className="text-xs font-mono text-[#8d877b] mb-3">{EXPERIENCE.period}</p>
+              <h3 className="text-base font-semibold text-[#fdfcfb]">{EXPERIENCES[0].role}</h3>
+              <p className="text-xs text-[#e8e4de]/80 font-medium mb-3">{EXPERIENCES[0].company} · {EXPERIENCES[0].division}</p>
 
               <ul className="space-y-2 text-xs text-[#a6a094] leading-relaxed">
-                {EXPERIENCE.bullets.map((b, idx) => (
+                {EXPERIENCES[0].bullets.map((b, idx) => (
                   <li key={idx} className="flex gap-2">
                     <span className="text-[#d97736] shrink-0 font-mono">›</span>
                     <span>{b}</span>
@@ -356,8 +378,35 @@ export default function BentoGrid() {
           </div>
         </BentoCard>
 
-        {/* ═══ ROW 4: Certifications (Full-Width Minimal Row) ═══ */}
-        <BentoCard className="bento-full" delay={0.26}>
+        {/* Experience 2: CRIS */}
+        <BentoCard className="bento-lg" delay={0.25}>
+          <div className="flex flex-col h-full justify-between">
+            <div>
+              <div className="flex items-center justify-between gap-2 mb-2">
+                <div className="flex items-center gap-1.5 text-xs font-mono text-[#d97736]">
+                  <Briefcase size={13} />
+                  <span className="uppercase tracking-wider">Machine Learning</span>
+                </div>
+                <span className="text-[11px] font-mono text-[#8d877b]">{EXPERIENCES[1].period}</span>
+              </div>
+
+              <h3 className="text-base font-semibold text-[#fdfcfb]">{EXPERIENCES[1].role}</h3>
+              <p className="text-xs text-[#e8e4de]/80 font-medium mb-3">{EXPERIENCES[1].company} · {EXPERIENCES[1].division}</p>
+
+              <ul className="space-y-2 text-xs text-[#a6a094] leading-relaxed">
+                {EXPERIENCES[1].bullets.map((b, idx) => (
+                  <li key={idx} className="flex gap-2">
+                    <span className="text-[#d97736] shrink-0 font-mono">›</span>
+                    <span>{b}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </BentoCard>
+
+        {/* ═══ ROW 5: Certifications (Full-Width Minimal Row) ═══ */}
+        <BentoCard className="bento-full" delay={0.28}>
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 mb-4">
             <div className="flex items-center gap-2">
               <Award size={16} className="text-[#d97736]" />
@@ -368,28 +417,28 @@ export default function BentoGrid() {
             <span className="text-xs font-mono text-[#8d877b]">AWS Academy Accredited</span>
           </div>
 
-          <div className="grid sm:grid-cols-3 gap-3">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
             {CERTS.map((cert) => (
               <div
                 key={cert.name}
-                className="rounded-md bg-[#0d0d0c] border border-[#e8e4de]/[0.05] p-3.5 hover:border-[#d97736]/30 transition-colors"
+                className="rounded-md bg-[#0d0d0c] border border-[#e8e4de]/[0.05] p-3 hover:border-[#d97736]/30 transition-colors"
               >
-                <p className="text-[11px] font-mono text-[#d97736] mb-0.5">{cert.issuer}</p>
-                <p className="text-xs sm:text-sm text-[#e8e4de] font-medium">{cert.name}</p>
+                <p className="text-[10px] font-mono text-[#d97736] mb-0.5">{cert.issuer}</p>
+                <p className="text-xs text-[#e8e4de] font-medium leading-snug">{cert.name}</p>
               </div>
             ))}
           </div>
         </BentoCard>
 
-        {/* ═══ ROW 5: Contact & Resume CTA ═══ */}
-        <BentoCard className="bento-full" delay={0.3} id="contact">
+        {/* ═══ ROW 6: Contact & Resume CTA ═══ */}
+        <BentoCard className="bento-full" delay={0.32} id="contact">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-6 py-2">
             <div>
               <h3 className="font-editorial text-2xl sm:text-3xl text-[#fdfcfb] font-normal mb-1">
                 Let&apos;s build something meaningful.
               </h3>
               <p className="text-sm text-[#a6a094]">
-                Open for AI/ML Engineering opportunities, collaborations, and discussions.
+                Available for AI/ML Engineering opportunities · +91 94731-54146 · abhigyansinhaa@gmail.com
               </p>
             </div>
 
