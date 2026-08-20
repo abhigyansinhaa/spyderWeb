@@ -5,8 +5,8 @@ import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const SECTIONS = [
-  { id: "home", label: "Home" },
-  { id: "work", label: "Work" },
+  { id: "home", label: "Overview" },
+  { id: "work", label: "Selected Work" },
   { id: "contact", label: "Contact" },
 ];
 
@@ -21,7 +21,7 @@ export default function Navbar() {
       const scrollY = window.scrollY;
       for (let i = sections.length - 1; i >= 0; i--) {
         const el = sections[i] as HTMLElement;
-        if (el.offsetTop <= scrollY + 120) {
+        if (el.offsetTop <= scrollY + 140) {
           setActiveSection(SECTIONS[i].id);
           break;
         }
@@ -48,38 +48,47 @@ export default function Navbar() {
         style={{ transform: `scaleX(${scrollProgress})` }}
       />
 
-      <div className="border-b border-white/5 bg-[var(--surface-0)]/80 backdrop-blur-md">
-        <nav className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 sm:px-6">
+      <div className="border-b border-[#e8e4de]/[0.05] bg-[#0d0d0c]/85 backdrop-blur-md">
+        <nav className="mx-auto flex max-w-6xl items-center justify-between px-5 py-3.5 sm:px-8">
           <button
             onClick={() => scrollTo("home")}
-            className="text-lg font-semibold text-white hover:text-indigo-400 transition-colors"
+            className="font-editorial italic text-xl font-normal text-[#fdfcfb] hover:text-[#d97736] transition-colors"
           >
-            AS
+            Abhigyan Sinha
           </button>
 
           {/* Desktop links */}
-          <ul className="hidden md:flex items-center gap-6">
+          <ul className="hidden md:flex items-center gap-7">
             {SECTIONS.map(({ id, label }) => (
               <li key={id}>
                 <button
                   onClick={() => scrollTo(id)}
-                  className={`text-sm font-medium transition-colors ${
-                    activeSection === id ? "text-indigo-400" : "text-zinc-500 hover:text-white"
+                  className={`text-xs font-mono tracking-wide transition-colors ${
+                    activeSection === id ? "text-[#d97736]" : "text-[#a6a094] hover:text-[#fdfcfb]"
                   }`}
                 >
                   {label}
                 </button>
               </li>
             ))}
+            <li>
+              <a
+                href="/resume.pdf"
+                download
+                className="text-xs font-mono px-3 py-1.5 rounded bg-[#151513] hover:bg-[#1c1c1a] border border-[#e8e4de]/[0.08] hover:border-[#d97736]/40 text-[#e8e4de] transition-colors"
+              >
+                Resume
+              </a>
+            </li>
           </ul>
 
           {/* Mobile menu button */}
           <button
             aria-label="Toggle menu"
-            className="md:hidden p-2 text-zinc-400 hover:text-white"
+            className="md:hidden p-1 text-[#a6a094] hover:text-[#fdfcfb]"
             onClick={() => setMobileOpen((o) => !o)}
           >
-            {mobileOpen ? <X size={24} /> : <Menu size={24} />}
+            {mobileOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
         </nav>
       </div>
@@ -91,21 +100,30 @@ export default function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden border-t border-white/5 bg-[var(--surface-0)]/95 backdrop-blur-md overflow-hidden"
+            className="md:hidden border-t border-[#e8e4de]/[0.05] bg-[#0d0d0c]/98 backdrop-blur-md overflow-hidden"
           >
-            <ul className="flex flex-col px-4 py-4 gap-2">
+            <ul className="flex flex-col px-5 py-4 gap-3">
               {SECTIONS.map(({ id, label }) => (
                 <li key={id}>
                   <button
                     onClick={() => scrollTo(id)}
-                    className={`block w-full text-left py-2 px-3 rounded-lg text-sm font-medium transition-colors ${
-                      activeSection === id ? "text-indigo-400 bg-white/5" : "text-zinc-400 hover:text-white hover:bg-white/5"
+                    className={`block w-full text-left py-2 text-xs font-mono transition-colors ${
+                      activeSection === id ? "text-[#d97736]" : "text-[#a6a094] hover:text-[#fdfcfb]"
                     }`}
                   >
                     {label}
                   </button>
                 </li>
               ))}
+              <li className="pt-2 border-t border-[#e8e4de]/[0.05]">
+                <a
+                  href="/resume.pdf"
+                  download
+                  className="inline-block text-xs font-mono text-[#d97736]"
+                >
+                  Download Resume ↗
+                </a>
+              </li>
             </ul>
           </motion.div>
         )}

@@ -37,7 +37,7 @@ export default function CursorGlow() {
   return (
     <div
       ref={glowRef}
-      className="cursor-glow opacity-0 transition-opacity duration-300 hidden md:block"
+      className="cursor-glow opacity-0 transition-opacity duration-500 hidden md:block"
       aria-hidden="true"
     />
   );

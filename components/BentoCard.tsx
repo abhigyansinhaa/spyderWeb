@@ -14,13 +14,13 @@ export default function BentoCard({ children, className = "", delay = 0, id }: B
   return (
     <motion.div
       id={id}
-      initial={{ opacity: 0, y: 20, scale: 0.98 }}
-      whileInView={{ opacity: 1, y: 0, scale: 1 }}
-      viewport={{ once: true, margin: "-60px" }}
+      initial={{ opacity: 0, y: 16 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-40px" }}
       transition={{
-        duration: 0.5,
+        duration: 0.45,
         delay,
-        ease: [0.22, 1, 0.36, 1],
+        ease: [0.16, 1, 0.3, 1],
       }}
       className={`bento-card group ${className}`}
     >

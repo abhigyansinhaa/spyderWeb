@@ -1,18 +1,17 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Github, Linkedin, Mail, ChevronDown, Download, FileText } from "lucide-react";
+import { Github, Linkedin, Mail, ChevronDown, Download } from "lucide-react";
 import { motion } from "framer-motion";
-import ParticleWeb from "./ParticleWeb";
 
 const TYPING_PHRASES = [
-  "AI Engineering",
-  "Applied ML / LLM",
-  "Data + Cloud",
+  "Applied Machine Learning",
+  "Explainable AI Systems",
+  "Data & Cloud Architectures",
 ];
-const TYPING_DELAY = 80;
-const PAUSE_AFTER_PHRASE = 2000;
-const DELETE_DELAY = 40;
+const TYPING_DELAY = 70;
+const PAUSE_AFTER_PHRASE = 2200;
+const DELETE_DELAY = 35;
 
 export default function Hero() {
   const [phraseIndex, setPhraseIndex] = useState(0);
@@ -43,97 +42,83 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex flex-col items-center justify-center px-4 pt-20 pb-16 overflow-hidden bg-[var(--surface-0)]"
+      className="relative min-h-[90vh] flex flex-col items-center justify-center px-4 pt-28 pb-16 overflow-hidden"
     >
-      {/* Particle web background */}
-      <ParticleWeb />
+      {/* Editorial Large Background Typographic Watermark */}
+      <div 
+        aria-hidden="true" 
+        className="absolute select-none pointer-events-none font-editorial italic text-[24vw] leading-none text-[#e8e4de]/[0.025] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 tracking-tighter"
+      >
+        AS
+      </div>
 
       <motion.div
-        initial={{ opacity: 0, y: 24 }}
+        initial={{ opacity: 0, y: 18 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        className="relative z-10 text-center max-w-3xl mx-auto"
+        transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+        className="relative z-10 text-center max-w-2xl mx-auto"
       >
-        <p className="text-indigo-400 font-mono text-sm mb-4">Hi, my name is</p>
-        <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-4 tracking-tight">
+        {/* Status Badge */}
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#151513] border border-[#e8e4de]/[0.08] text-[#a6a094] text-xs font-mono mb-8 tracking-wide">
+          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500/90 shadow-[0_0_8px_rgba(16,185,129,0.5)]"></span>
+          <span>Open to AI / ML Engineering roles</span>
+        </div>
+
+        {/* Name with Editorial Serif */}
+        <h1 className="font-editorial text-5xl sm:text-6xl md:text-7xl font-normal text-[#fdfcfb] tracking-tight mb-4 leading-[1.08]">
           Abhigyan Sinha
         </h1>
-        <div className="min-h-8 text-xl sm:text-2xl text-zinc-400 mb-6">
-          <span className="text-white font-medium">{displayText}</span>
-          <span className="animate-pulse text-indigo-400">|</span>
+
+        {/* Dynamic Focus Line */}
+        <div className="h-8 text-lg sm:text-xl text-[#a6a094] mb-5 font-mono">
+          <span>{displayText}</span>
+          <span className="animate-pulse text-[#d97736] ml-0.5">_</span>
         </div>
-        <p className="text-zinc-400 text-base sm:text-lg mb-4 max-w-xl mx-auto">
-          AI Engineer building applied ML/LLM products, data pipelines, and cloud-native solutions.
+
+        {/* Concise Mission Subtext */}
+        <p className="text-[#a6a094] text-base sm:text-lg leading-relaxed mb-10 max-w-lg mx-auto font-sans">
+          Building end-to-end applied ML platforms, explainability tooling, and intelligent systems from research to production.
         </p>
 
-        {/* Open to opportunities badge */}
-        <div className="flex items-center justify-center mb-8">
-          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/[0.04] border border-white/[0.08] text-zinc-400 text-sm">
-            <span className="relative flex h-2 w-2">
-              <span className="pulse-dot absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-            </span>
-            Currently open to opportunities
-          </span>
-        </div>
-
-        <div className="flex items-center justify-center gap-3 mb-10 flex-wrap">
-          <motion.a
+        {/* Action CTAs */}
+        <div className="flex items-center justify-center gap-3 mb-12 flex-wrap">
+          <a
             href="/resume.pdf"
             download
-            whileHover={{ scale: 1.03 }}
-            whileTap={{ scale: 0.97 }}
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-medium transition-all shadow-lg shadow-indigo-500/20 hover:shadow-indigo-500/30"
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-md bg-[#d97736] hover:bg-[#e88748] text-[#0d0d0c] font-semibold text-sm transition-colors duration-200 shadow-md"
           >
-            <Download size={16} />
-            Resume
-          </motion.a>
+            <Download size={15} strokeWidth={2.5} />
+            <span>Resume</span>
+          </a>
 
-          {[
-            { href: "https://github.com/abhigyansinhaa", icon: Github, label: "GitHub", external: true },
-            { href: "https://linkedin.com/in/abhigyansinhaa", icon: Linkedin, label: "LinkedIn", external: true },
-            { href: "mailto:abhigyansinhaa@gmail.com", icon: Mail, label: "Email", external: false },
-          ].map(({ href, icon: Icon, label, external }) => (
-            <motion.a
-              key={label}
-              href={href}
-              target={external ? "_blank" : undefined}
-              rel={external ? "noopener noreferrer" : undefined}
-              whileHover={{ scale: 1.1, y: -2 }}
-              whileTap={{ scale: 0.95 }}
-              transition={{ type: "spring", stiffness: 400, damping: 17 }}
-              className="p-2.5 rounded-lg bg-white/5 border border-white/10 text-zinc-400 hover:text-white hover:border-indigo-500/50 hover:bg-white/10 transition-colors"
-              aria-label={label}
-            >
-              <Icon size={20} />
-            </motion.a>
-          ))}
+          <button
+            onClick={scrollToWork}
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-md bg-[#151513] hover:bg-[#1c1c1a] border border-[#e8e4de]/[0.08] hover:border-[#e8e4de]/[0.18] text-[#e8e4de] text-sm font-medium transition-colors duration-200"
+          >
+            <span>Selected Work</span>
+            <ChevronDown size={15} />
+          </button>
+
+          {/* Social Icons */}
+          <div className="flex items-center gap-2 ml-1">
+            {[
+              { href: "https://github.com/abhigyansinhaa", icon: Github, label: "GitHub" },
+              { href: "https://linkedin.com/in/abhigyansinhaa", icon: Linkedin, label: "LinkedIn" },
+              { href: "mailto:abhigyansinhaa@gmail.com", icon: Mail, label: "Email" },
+            ].map(({ href, icon: Icon, label }) => (
+              <a
+                key={label}
+                href={href}
+                target={label !== "Email" ? "_blank" : undefined}
+                rel={label !== "Email" ? "noopener noreferrer" : undefined}
+                className="p-2.5 rounded-md bg-[#151513] hover:bg-[#1c1c1a] border border-[#e8e4de]/[0.08] hover:border-[#d97736]/40 text-[#a6a094] hover:text-[#e8e4de] transition-colors"
+                aria-label={label}
+              >
+                <Icon size={17} />
+              </a>
+            ))}
+          </div>
         </div>
-
-        <motion.button
-          onClick={scrollToWork}
-          whileHover={{ scale: 1.03 }}
-          whileTap={{ scale: 0.97 }}
-          className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-white/5 border border-white/10 hover:border-indigo-500/30 text-white font-medium transition-all hover:bg-white/8"
-        >
-          View My Work
-          <ChevronDown size={18} />
-        </motion.button>
-      </motion.div>
-
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1, duration: 0.6 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10"
-      >
-        <button
-          onClick={() => document.getElementById("work")?.scrollIntoView({ behavior: "smooth" })}
-          className="text-zinc-600 hover:text-zinc-400 transition-colors animate-bounce"
-          aria-label="Scroll down"
-        >
-          <ChevronDown size={28} />
-        </button>
       </motion.div>
     </section>
   );
