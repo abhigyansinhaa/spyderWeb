@@ -28,13 +28,14 @@ export default function Contact() {
           viewport={{ once: true, margin: "-80px" }}
           className="text-2xl sm:text-3xl font-bold text-white mb-4 heading-accent inline-block"
         >
+          <span className="text-indigo-400 font-mono text-base mr-2">06.</span>
           Get In Touch
         </motion.h2>
         <motion.p
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-gray-400 mb-10 mt-6"
+          className="text-zinc-500 mb-10 mt-6"
         >
           Let&apos;s build something together.
         </motion.p>
@@ -48,7 +49,7 @@ export default function Contact() {
         >
           <div className="space-y-4">
             <div>
-              <label htmlFor="name" className="block text-sm font-medium text-gray-400 mb-1">
+              <label htmlFor="name" className="block text-sm font-medium text-zinc-400 mb-1">
                 Name
               </label>
               <input
@@ -58,12 +59,12 @@ export default function Contact() {
                 required
                 value={formData.name}
                 onChange={handleChange}
-                className="w-full px-4 py-2.5 rounded-lg bg-white/4 border border-white/8 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500/60 focus:shadow-[0_0_0_3px_rgba(59,130,246,0.1)] transition-all"
+                className="w-full px-4 py-2.5 rounded-lg bg-white/4 border border-white/8 text-white placeholder-zinc-600 focus:outline-none focus:border-indigo-500/60 focus:shadow-[0_0_0_3px_rgba(99,102,241,0.1)] transition-all"
                 placeholder="Your name"
               />
             </div>
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-400 mb-1">
+              <label htmlFor="email" className="block text-sm font-medium text-zinc-400 mb-1">
                 Email
               </label>
               <input
@@ -73,12 +74,12 @@ export default function Contact() {
                 required
                 value={formData.email}
                 onChange={handleChange}
-                className="w-full px-4 py-2.5 rounded-lg bg-white/4 border border-white/8 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500/60 focus:shadow-[0_0_0_3px_rgba(59,130,246,0.1)] transition-all"
+                className="w-full px-4 py-2.5 rounded-lg bg-white/4 border border-white/8 text-white placeholder-zinc-600 focus:outline-none focus:border-indigo-500/60 focus:shadow-[0_0_0_3px_rgba(99,102,241,0.1)] transition-all"
                 placeholder="your@email.com"
               />
             </div>
             <div>
-              <label htmlFor="message" className="block text-sm font-medium text-gray-400 mb-1">
+              <label htmlFor="message" className="block text-sm font-medium text-zinc-400 mb-1">
                 Message
               </label>
               <textarea
@@ -88,7 +89,7 @@ export default function Contact() {
                 rows={4}
                 value={formData.message}
                 onChange={handleChange}
-                className="w-full px-4 py-2.5 rounded-lg bg-white/4 border border-white/8 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500/60 focus:shadow-[0_0_0_3px_rgba(59,130,246,0.1)] transition-all resize-none"
+                className="w-full px-4 py-2.5 rounded-lg bg-white/4 border border-white/8 text-white placeholder-zinc-600 focus:outline-none focus:border-indigo-500/60 focus:shadow-[0_0_0_3px_rgba(99,102,241,0.1)] transition-all resize-none"
                 placeholder="Your message..."
               />
             </div>
@@ -97,7 +98,7 @@ export default function Contact() {
             type="submit"
             whileHover={{ scale: 1.01 }}
             whileTap={{ scale: 0.98 }}
-            className="mt-4 w-full flex items-center justify-center gap-2 px-4 py-3 rounded-lg bg-linear-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 text-white font-medium transition-all shadow-lg shadow-blue-500/20 hover:shadow-blue-500/30"
+            className="mt-4 w-full flex items-center justify-center gap-2 px-4 py-3 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white font-medium transition-all shadow-lg shadow-indigo-500/20 hover:shadow-indigo-500/30"
           >
             <Send size={18} />
             Send via Email
@@ -123,7 +124,7 @@ export default function Contact() {
               whileHover={{ scale: 1.1, y: -2 }}
               whileTap={{ scale: 0.95 }}
               transition={{ type: "spring", stiffness: 400, damping: 17 }}
-              className="p-2.5 rounded-lg bg-white/5 border border-white/8 text-gray-400 hover:text-white hover:border-blue-500/50 transition-colors"
+              className="p-2.5 rounded-lg bg-white/5 border border-white/8 text-zinc-500 hover:text-white hover:border-indigo-500/50 transition-colors"
               aria-label={label}
             >
               <Icon size={22} />

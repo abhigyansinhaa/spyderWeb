@@ -14,9 +14,9 @@ export default function Footer() {
   const scrollTo = (id: string) => document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
 
   return (
-    <footer className="border-t border-white/5 bg-(--surface-0) py-10 px-4">
+    <footer className="border-t border-white/5 bg-[var(--surface-0)] py-10 px-4">
       <div className="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6 flex-wrap">
-        <p className="text-gray-500 text-sm">
+        <p className="text-zinc-600 text-sm">
           © {new Date().getFullYear()} Abhigyan Sinha. All rights reserved.
         </p>
         <nav className="flex items-center gap-6">
@@ -24,7 +24,7 @@ export default function Footer() {
             <button
               key={id}
               onClick={() => scrollTo(id)}
-              className="text-sm text-gray-500 hover:text-white transition-colors"
+              className="text-sm text-zinc-600 hover:text-white transition-colors"
             >
               {label}
             </button>
@@ -41,7 +41,7 @@ export default function Footer() {
               href={href}
               target={external ? "_blank" : undefined}
               rel={external ? "noopener noreferrer" : undefined}
-              className="text-gray-500 hover:text-white transition-colors"
+              className="text-zinc-600 hover:text-white transition-colors"
               aria-label={label}
             >
               <Icon size={20} />

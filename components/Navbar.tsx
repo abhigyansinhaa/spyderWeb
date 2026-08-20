@@ -17,6 +17,7 @@ const SECTIONS = [
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
+  const [scrollProgress, setScrollProgress] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -29,8 +30,11 @@ export default function Navbar() {
           break;
         }
       }
+
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      setScrollProgress(docHeight > 0 ? scrollY / docHeight : 0);
     };
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -41,40 +45,48 @@ export default function Navbar() {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 border-b border-white/5 bg-(--surface-0)/80 backdrop-blur-md">
-      <nav className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 sm:px-6">
-        <button
-          onClick={() => scrollTo("home")}
-          className="text-lg font-semibold text-white hover:text-blue-400 transition-colors"
-        >
-          AS
-        </button>
+    <header className="fixed top-0 left-0 right-0 z-50">
+      {/* Scroll progress bar */}
+      <div
+        className="scroll-progress"
+        style={{ transform: `scaleX(${scrollProgress})` }}
+      />
 
-        {/* Desktop links */}
-        <ul className="hidden md:flex items-center gap-6">
-          {SECTIONS.map(({ id, label }) => (
-            <li key={id}>
-              <button
-                onClick={() => scrollTo(id)}
-                className={`text-sm font-medium transition-colors ${
-                  activeSection === id ? "text-blue-400" : "text-gray-400 hover:text-white"
-                }`}
-              >
-                {label}
-              </button>
-            </li>
-          ))}
-        </ul>
+      <div className="border-b border-white/5 bg-[var(--surface-0)]/80 backdrop-blur-md">
+        <nav className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 sm:px-6">
+          <button
+            onClick={() => scrollTo("home")}
+            className="text-lg font-semibold text-white hover:text-indigo-400 transition-colors"
+          >
+            AS
+          </button>
 
-        {/* Mobile menu button */}
-        <button
-          aria-label="Toggle menu"
-          className="md:hidden p-2 text-gray-400 hover:text-white"
-          onClick={() => setMobileOpen((o) => !o)}
-        >
-          {mobileOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
-      </nav>
+          {/* Desktop links */}
+          <ul className="hidden md:flex items-center gap-6">
+            {SECTIONS.map(({ id, label }) => (
+              <li key={id}>
+                <button
+                  onClick={() => scrollTo(id)}
+                  className={`text-sm font-medium transition-colors ${
+                    activeSection === id ? "text-indigo-400" : "text-zinc-500 hover:text-white"
+                  }`}
+                >
+                  {label}
+                </button>
+              </li>
+            ))}
+          </ul>
+
+          {/* Mobile menu button */}
+          <button
+            aria-label="Toggle menu"
+            className="md:hidden p-2 text-zinc-400 hover:text-white"
+            onClick={() => setMobileOpen((o) => !o)}
+          >
+            {mobileOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </nav>
+      </div>
 
       {/* Mobile drawer */}
       <AnimatePresence>
@@ -83,7 +95,7 @@ export default function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden border-t border-white/5 bg-(--surface-0)/95 backdrop-blur-md overflow-hidden"
+            className="md:hidden border-t border-white/5 bg-[var(--surface-0)]/95 backdrop-blur-md overflow-hidden"
           >
             <ul className="flex flex-col px-4 py-4 gap-2">
               {SECTIONS.map(({ id, label }) => (
@@ -91,7 +103,7 @@ export default function Navbar() {
                   <button
                     onClick={() => scrollTo(id)}
                     className={`block w-full text-left py-2 px-3 rounded-lg text-sm font-medium transition-colors ${
-                      activeSection === id ? "text-blue-400 bg-white/5" : "text-gray-400 hover:text-white hover:bg-white/5"
+                      activeSection === id ? "text-indigo-400 bg-white/5" : "text-zinc-400 hover:text-white hover:bg-white/5"
                     }`}
                   >
                     {label}
