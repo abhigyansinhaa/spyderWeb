@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { RESUME_URL } from "@/lib/constants";
 
 const SECTIONS = [
   { id: "home", label: "OVERVIEW" },
@@ -73,8 +74,9 @@ export default function Navbar() {
             ))}
             <li>
               <a
-                href="/resume.pdf"
-                download
+                href={RESUME_URL}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-[11px] font-mono tracking-wider uppercase px-3 py-1.5 rounded bg-[#151513] hover:bg-[#1c1c1a] border border-[#e8e4de]/[0.08] hover:border-[#d97736]/40 text-[#e8e4de] transition-colors"
               >
                 Resume ↗
@@ -117,11 +119,12 @@ export default function Navbar() {
               ))}
               <li className="pt-2 border-t border-[#e8e4de]/[0.05]">
                 <a
-                  href="/resume.pdf"
-                  download
+                  href={RESUME_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-block text-xs font-mono text-[#d97736]"
                 >
-                  Download Resume ↗
+                  View Resume in Drive ↗
                 </a>
               </li>
             </ul>

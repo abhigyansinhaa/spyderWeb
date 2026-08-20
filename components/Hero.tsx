@@ -1,8 +1,9 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Github, Linkedin, Mail, ChevronDown, Download } from "lucide-react";
+import { Github, Linkedin, Mail, ChevronDown, ArrowUpRight, FileText } from "lucide-react";
 import { motion } from "framer-motion";
+import { RESUME_URL } from "@/lib/constants";
 
 const TYPING_PHRASES = [
   "Applied Machine Learning",
@@ -83,12 +84,14 @@ export default function Hero() {
         {/* Action CTAs */}
         <div className="flex items-center justify-center gap-3 mb-12 flex-wrap">
           <a
-            href="/resume.pdf"
-            download
+            href={RESUME_URL}
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-5 py-2.5 rounded-md bg-[#d97736] hover:bg-[#e88748] text-[#0d0d0c] font-semibold text-sm transition-colors duration-200 shadow-md"
           >
-            <Download size={15} strokeWidth={2.5} />
+            <FileText size={15} strokeWidth={2.2} />
             <span>Resume</span>
+            <ArrowUpRight size={13} strokeWidth={2.5} />
           </a>
 
           <button

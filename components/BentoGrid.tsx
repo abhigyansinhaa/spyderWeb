@@ -1,9 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import { Github, Briefcase, Award, Mail, Linkedin, Download, ArrowUpRight, Play, FileCode, Send, MessageSquare } from "lucide-react";
+import { Github, Briefcase, Award, Mail, Linkedin, Download, ArrowUpRight, Play, FileCode, Send, MessageSquare, FileText } from "lucide-react";
 import BentoCard from "./BentoCard";
 import Image from "next/image";
+import { RESUME_URL } from "@/lib/constants";
 
 /* ────────────────────────────────────────────
    RESUME DATA
@@ -474,12 +475,14 @@ export default function BentoGrid() {
 
               <div className="flex items-center gap-3">
                 <a
-                  href="/resume.pdf"
-                  download
+                  href={RESUME_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-4 py-2 rounded-md bg-[#151513] hover:bg-[#1c1c1a] border border-[#e8e4de]/[0.08] hover:border-[#d97736]/40 text-[#e8e4de] text-xs font-mono transition-colors"
                 >
-                  <Download size={13} strokeWidth={2} />
-                  <span>Resume PDF</span>
+                  <FileText size={13} strokeWidth={2} />
+                  <span>Resume</span>
+                  <ArrowUpRight size={11} strokeWidth={2.5} />
                 </a>
 
                 <div className="flex items-center gap-1.5">
