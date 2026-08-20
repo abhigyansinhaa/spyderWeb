@@ -13,9 +13,9 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Abhigyan Sinha | Data Engineering & ML",
+  title: "Abhigyan Sinha | AI Engineer",
   description:
-    "Portfolio of Abhigyan Sinha — Data Engineering, Machine Learning, AWS. B.Tech CS at KIIT. Data Analyst experience at CRIS.",
+    "Portfolio of Abhigyan Sinha — AI Engineer building applied ML/LLM products, data pipelines, and cloud-native solutions. B.Tech CS at KIIT.",
 };
 
 export default function RootLayout({

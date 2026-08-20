@@ -1,12 +1,6 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
-import About from "@/components/About";
-import Experience from "@/components/Experience";
-import Projects from "@/components/Projects";
-import Skills from "@/components/Skills";
-import Certifications from "@/components/Certifications";
-import Contact from "@/components/Contact";
-import Footer from "@/components/Footer";
+import BentoGrid from "@/components/BentoGrid";
 import CursorGlow from "@/components/CursorGlow";
 
 export default function Home() {
@@ -16,14 +10,15 @@ export default function Home() {
       <Navbar />
       <main>
         <Hero />
-        <About />
-        <Experience />
-        <Projects />
-        <Skills />
-        <Certifications />
-        <Contact />
-        <Footer />
+        <BentoGrid />
       </main>
+      <footer className="border-t border-white/5 bg-[var(--surface-0)] py-8 px-4">
+        <div className="max-w-5xl mx-auto text-center">
+          <p className="text-zinc-600 text-sm">
+            © {new Date().getFullYear()} Abhigyan Sinha. All rights reserved.
+          </p>
+        </div>
+      </footer>
     </>
   );
 }

@@ -1,14 +1,14 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Github, Linkedin, Mail, ChevronDown } from "lucide-react";
+import { Github, Linkedin, Mail, ChevronDown, Download, FileText } from "lucide-react";
 import { motion } from "framer-motion";
 import ParticleWeb from "./ParticleWeb";
 
 const TYPING_PHRASES = [
-  "Data Engineering",
-  "Machine Learning",
-  "Cloud (AWS)",
+  "AI Engineering",
+  "Applied ML / LLM",
+  "Data + Cloud",
 ];
 const TYPING_DELAY = 80;
 const PAUSE_AFTER_PHRASE = 2000;
@@ -38,7 +38,7 @@ export default function Hero() {
     }
   }, [phraseIndex, displayText, isDeleting]);
 
-  const scrollToProjects = () => document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" });
+  const scrollToWork = () => document.getElementById("work")?.scrollIntoView({ behavior: "smooth" });
 
   return (
     <section
@@ -58,15 +58,37 @@ export default function Hero() {
         <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-4 tracking-tight">
           Abhigyan Sinha
         </h1>
-        <div className="min-h-8 text-xl sm:text-2xl text-zinc-400 mb-8">
+        <div className="min-h-8 text-xl sm:text-2xl text-zinc-400 mb-6">
           <span className="text-white font-medium">{displayText}</span>
           <span className="animate-pulse text-indigo-400">|</span>
         </div>
-        <p className="text-zinc-400 text-base sm:text-lg mb-10 max-w-xl mx-auto">
-          B.Tech in Computer Science at KIIT. Building data pipelines, ML models, and cloud solutions.
+        <p className="text-zinc-400 text-base sm:text-lg mb-4 max-w-xl mx-auto">
+          AI Engineer building applied ML/LLM products, data pipelines, and cloud-native solutions.
         </p>
 
-        <div className="flex items-center justify-center gap-4 mb-10">
+        {/* Open to opportunities badge */}
+        <div className="flex items-center justify-center mb-8">
+          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/[0.04] border border-white/[0.08] text-zinc-400 text-sm">
+            <span className="relative flex h-2 w-2">
+              <span className="pulse-dot absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+            </span>
+            Currently open to opportunities
+          </span>
+        </div>
+
+        <div className="flex items-center justify-center gap-3 mb-10 flex-wrap">
+          <motion.a
+            href="/resume.pdf"
+            download
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.97 }}
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-medium transition-all shadow-lg shadow-indigo-500/20 hover:shadow-indigo-500/30"
+          >
+            <Download size={16} />
+            Resume
+          </motion.a>
+
           {[
             { href: "https://github.com/abhigyansinhaa", icon: Github, label: "GitHub", external: true },
             { href: "https://linkedin.com/in/abhigyansinhaa", icon: Linkedin, label: "LinkedIn", external: true },
@@ -83,16 +105,16 @@ export default function Hero() {
               className="p-2.5 rounded-lg bg-white/5 border border-white/10 text-zinc-400 hover:text-white hover:border-indigo-500/50 hover:bg-white/10 transition-colors"
               aria-label={label}
             >
-              <Icon size={22} />
+              <Icon size={20} />
             </motion.a>
           ))}
         </div>
 
         <motion.button
-          onClick={scrollToProjects}
+          onClick={scrollToWork}
           whileHover={{ scale: 1.03 }}
           whileTap={{ scale: 0.97 }}
-          className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white font-medium transition-all shadow-lg shadow-indigo-500/20 hover:shadow-indigo-500/30"
+          className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-white/5 border border-white/10 hover:border-indigo-500/30 text-white font-medium transition-all hover:bg-white/8"
         >
           View My Work
           <ChevronDown size={18} />
@@ -106,7 +128,7 @@ export default function Hero() {
         className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10"
       >
         <button
-          onClick={() => document.getElementById("about")?.scrollIntoView({ behavior: "smooth" })}
+          onClick={() => document.getElementById("work")?.scrollIntoView({ behavior: "smooth" })}
           className="text-zinc-600 hover:text-zinc-400 transition-colors animate-bounce"
           aria-label="Scroll down"
         >
