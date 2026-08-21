@@ -178,8 +178,8 @@ export default function BentoGrid() {
             </div>
 
             {/* Right Column: Architectural Highlights / Metrics Panel */}
-            <div className="w-full lg:w-72 shrink-0 rounded-lg bg-[#0d0d0c] border border-[#e8e4de]/[0.06] p-5">
-              <p className="text-xs font-mono uppercase tracking-wider text-[#a6a094] mb-4 pb-2 border-b border-[#e8e4de]/[0.06]">
+            <div className="w-full lg:w-72 shrink-0 rounded-lg bg-[#0d0d0c] border border-[#e8e4de]/6 p-5">
+              <p className="text-xs font-mono uppercase tracking-wider text-[#a6a094] mb-4 pb-2 border-b border-[#e8e4de]/6">
                 System Architecture
               </p>
               
@@ -192,7 +192,7 @@ export default function BentoGrid() {
                 ))}
               </div>
 
-              <div className="mt-5 pt-3 border-t border-[#e8e4de]/[0.06] flex items-center justify-between text-xs font-mono text-[#a6a094]">
+              <div className="mt-5 pt-3 border-t border-[#e8e4de]/6 flex items-center justify-between text-xs font-mono text-[#a6a094]">
                 <span>Status</span>
                 <span className="text-[#d97736] flex items-center gap-1.5">
                   <span className="w-1.5 h-1.5 rounded-full bg-[#d97736]"></span>
@@ -221,8 +221,8 @@ export default function BentoGrid() {
               </p>
             </div>
 
-            <div className="flex items-center gap-3 pt-4 border-t border-[#e8e4de]/[0.06]">
-              <div className="w-10 h-10 rounded-full overflow-hidden border border-[#e8e4de]/[0.1] shrink-0 bg-[#0d0d0c]">
+            <div className="flex items-center gap-3 pt-4 border-t border-[#e8e4de]/6">
+              <div className="w-10 h-10 rounded-full overflow-hidden border border-[#e8e4de]/10 shrink-0 bg-[#0d0d0c]">
                 <Image
                   src="/avatar.jpg"
                   alt="Abhigyan Sinha"
@@ -247,7 +247,7 @@ export default function BentoGrid() {
 
           <div className="space-y-3.5">
             {SKILL_SECTIONS.map((sec) => (
-              <div key={sec.category} className="pb-3 border-b border-[#e8e4de]/[0.04] last:border-0 last:pb-0">
+              <div key={sec.category} className="pb-3 border-b border-[#e8e4de]/4 last:border-0 last:pb-0">
                 <p className="text-xs font-mono text-[#d97736] mb-1 font-medium">
                   {sec.category}
                 </p>
@@ -273,7 +273,7 @@ export default function BentoGrid() {
               <p className="text-[#a6a094] text-sm leading-relaxed mb-3">
                 {PROJECTS[0].description}
               </p>
-              <div className="mb-4 p-2.5 rounded bg-[#0d0d0c] border border-[#e8e4de]/[0.05]">
+              <div className="mb-4 p-2.5 rounded bg-[#0d0d0c] border border-[#e8e4de]/5">
                 <p className="text-[11px] font-mono text-[#d97736] mb-0.5">Core Innovation</p>
                 <p className="text-xs text-[#e8e4de] leading-snug">{PROJECTS[0].metric}</p>
               </div>
@@ -285,7 +285,7 @@ export default function BentoGrid() {
                   <span key={t} className="tech-tag">{t}</span>
                 ))}
               </div>
-              <div className="flex items-center gap-4 pt-1 border-t border-[#e8e4de]/[0.05]">
+              <div className="flex items-center gap-4 pt-1 border-t border-[#e8e4de]/5">
                 <a
                   href={PROJECTS[0].github}
                   target="_blank"
@@ -323,7 +323,7 @@ export default function BentoGrid() {
               <p className="text-[#a6a094] text-sm leading-relaxed mb-3">
                 {PROJECTS[1].description}
               </p>
-              <div className="mb-4 p-2.5 rounded bg-[#0d0d0c] border border-[#e8e4de]/[0.05]">
+              <div className="mb-4 p-2.5 rounded bg-[#0d0d0c] border border-[#e8e4de]/5">
                 <p className="text-[11px] font-mono text-[#d97736] mb-0.5">Core Innovation</p>
                 <p className="text-xs text-[#e8e4de] leading-snug">{PROJECTS[1].metric}</p>
               </div>
@@ -335,7 +335,7 @@ export default function BentoGrid() {
                   <span key={t} className="tech-tag">{t}</span>
                 ))}
               </div>
-              <div className="flex items-center gap-4 pt-1 border-t border-[#e8e4de]/[0.05]">
+              <div className="flex items-center gap-4 pt-1 border-t border-[#e8e4de]/5">
                 <a
                   href={PROJECTS[1].github}
                   target="_blank"
@@ -433,7 +433,7 @@ export default function BentoGrid() {
             {CERTS.map((cert) => (
               <div
                 key={cert.name}
-                className="rounded-md bg-[#0d0d0c] border border-[#e8e4de]/[0.05] p-3 hover:border-[#d97736]/30 transition-colors"
+                className="rounded-md bg-[#0d0d0c] border border-[#e8e4de]/5 p-3 hover:border-[#d97736]/30 transition-colors"
               >
                 <p className="text-[10px] font-mono text-[#d97736] mb-0.5">{cert.issuer}</p>
                 <p className="text-xs text-[#e8e4de] font-medium leading-snug">{cert.name}</p>
@@ -478,7 +478,7 @@ export default function BentoGrid() {
                   href={RESUME_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-4 py-2 rounded-md bg-[#151513] hover:bg-[#1c1c1a] border border-[#e8e4de]/[0.08] hover:border-[#d97736]/40 text-[#e8e4de] text-xs font-mono transition-colors"
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-md bg-[#151513] hover:bg-[#1c1c1a] border border-[#e8e4de]/8 hover:border-[#d97736]/40 text-[#e8e4de] text-xs font-mono transition-colors"
                 >
                   <FileText size={13} strokeWidth={2} />
                   <span>Resume</span>
@@ -496,7 +496,7 @@ export default function BentoGrid() {
                       href={href}
                       target={label !== "Email" ? "_blank" : undefined}
                       rel={label !== "Email" ? "noopener noreferrer" : undefined}
-                      className="p-2 rounded-md bg-[#0d0d0c] hover:bg-[#1c1c1a] border border-[#e8e4de]/[0.08] hover:border-[#d97736]/40 text-[#a6a094] hover:text-[#e8e4de] transition-colors"
+                      className="p-2 rounded-md bg-[#0d0d0c] hover:bg-[#1c1c1a] border border-[#e8e4de]/8 hover:border-[#d97736]/40 text-[#a6a094] hover:text-[#e8e4de] transition-colors"
                       aria-label={label}
                     >
                       <Icon size={15} />
@@ -507,7 +507,7 @@ export default function BentoGrid() {
             </div>
 
             {/* Right Column: Direct Text Box */}
-            <div className="w-full lg:w-[480px] shrink-0">
+            <div className="w-full lg:w-120 shrink-0">
               <form onSubmit={handleSendDirectNote} className="flex flex-col gap-3">
                 <div className="relative">
                   <textarea
@@ -515,7 +515,7 @@ export default function BentoGrid() {
                     onChange={(e) => setDirectNote(e.target.value)}
                     placeholder="Type your message here... (e.g. Hi Abhigyan, let's discuss an ML role / project)"
                     rows={4}
-                    className="w-full bg-[#0d0d0c] border border-[#e8e4de]/[0.08] focus:border-[#d97736]/60 rounded-lg p-3.5 text-sm text-[#e8e4de] placeholder-[#8d877b] focus:outline-none transition-colors resize-none font-sans"
+                    className="w-full bg-[#0d0d0c] border border-[#e8e4de]/8 focus:border-[#d97736]/60 rounded-lg p-3.5 text-sm text-[#e8e4de] placeholder-[#8d877b] focus:outline-none transition-colors resize-none font-sans"
                     onKeyDown={(e) => {
                       if (e.key === "Enter" && (e.metaKey || e.ctrlKey)) {
                         handleSendDirectNote(e);

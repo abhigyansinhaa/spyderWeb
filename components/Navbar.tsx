@@ -49,7 +49,7 @@ export default function Navbar() {
         style={{ transform: `scaleX(${scrollProgress})` }}
       />
 
-      <div className="border-b border-[#e8e4de]/[0.05] bg-[#0d0d0c]/85 backdrop-blur-md">
+      <div className="border-b border-[#e8e4de]/5 bg-[#0d0d0c]/85 backdrop-blur-md">
         <nav className="mx-auto flex max-w-6xl items-center justify-between px-5 py-3.5 sm:px-8">
           <button
             onClick={() => scrollTo("home")}
@@ -77,7 +77,7 @@ export default function Navbar() {
                 href={RESUME_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[11px] font-mono tracking-wider uppercase px-3 py-1.5 rounded bg-[#151513] hover:bg-[#1c1c1a] border border-[#e8e4de]/[0.08] hover:border-[#d97736]/40 text-[#e8e4de] transition-colors"
+                className="text-[11px] font-mono tracking-wider uppercase px-3 py-1.5 rounded bg-[#151513] hover:bg-[#1c1c1a] border border-[#e8e4de]/8 hover:border-[#d97736]/40 text-[#e8e4de] transition-colors"
               >
                 Resume ↗
               </a>
@@ -102,7 +102,7 @@ export default function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden border-t border-[#e8e4de]/[0.05] bg-[#0d0d0c]/98 backdrop-blur-md overflow-hidden"
+            className="md:hidden border-t border-[#e8e4de]/5 bg-[#0d0d0c]/98 backdrop-blur-md overflow-hidden"
           >
             <ul className="flex flex-col px-5 py-4 gap-3">
               {SECTIONS.map(({ id, label }) => (
@@ -117,7 +117,7 @@ export default function Navbar() {
                   </button>
                 </li>
               ))}
-              <li className="pt-2 border-t border-[#e8e4de]/[0.05]">
+              <li className="pt-2 border-t border-[#e8e4de]/5">
                 <a
                   href={RESUME_URL}
                   target="_blank"

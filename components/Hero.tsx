@@ -48,7 +48,7 @@ export default function Hero() {
       {/* Editorial Large Background Typographic Watermark */}
       <div 
         aria-hidden="true" 
-        className="absolute select-none pointer-events-none font-editorial italic text-[24vw] leading-none text-[#e8e4de]/[0.025] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 tracking-tighter"
+        className="absolute select-none pointer-events-none font-editorial italic text-[24vw] leading-none text-[#e8e4de]/2.5 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 tracking-tighter"
       >
         AS
       </div>
@@ -60,7 +60,7 @@ export default function Hero() {
         className="relative z-10 text-center max-w-2xl mx-auto"
       >
         {/* Status Badge */}
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#151513] border border-[#e8e4de]/[0.08] text-[#a6a094] text-xs font-mono mb-8 tracking-wide">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#151513] border border-[#e8e4de]/8 text-[#a6a094] text-xs font-mono mb-8 tracking-wide">
           <span className="w-1.5 h-1.5 rounded-full bg-emerald-500/90 shadow-[0_0_8px_rgba(16,185,129,0.5)]"></span>
           <span>Open to AI / ML Engineering roles</span>
         </div>
@@ -96,7 +96,7 @@ export default function Hero() {
 
           <button
             onClick={scrollToWork}
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-md bg-[#151513] hover:bg-[#1c1c1a] border border-[#e8e4de]/[0.08] hover:border-[#e8e4de]/[0.18] text-[#e8e4de] text-sm font-medium transition-colors duration-200"
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-md bg-[#151513] hover:bg-[#1c1c1a] border border-[#e8e4de]/8 hover:border-[#e8e4de]/18 text-[#e8e4de] text-sm font-medium transition-colors duration-200"
           >
             <span>Selected Work</span>
             <ChevronDown size={15} />
@@ -114,7 +114,7 @@ export default function Hero() {
                 href={href}
                 target={label !== "Email" ? "_blank" : undefined}
                 rel={label !== "Email" ? "noopener noreferrer" : undefined}
-                className="p-2.5 rounded-md bg-[#151513] hover:bg-[#1c1c1a] border border-[#e8e4de]/[0.08] hover:border-[#d97736]/40 text-[#a6a094] hover:text-[#e8e4de] transition-colors"
+                className="p-2.5 rounded-md bg-[#151513] hover:bg-[#1c1c1a] border border-[#e8e4de]/8 hover:border-[#d97736]/40 text-[#a6a094] hover:text-[#e8e4de] transition-colors"
                 aria-label={label}
               >
                 <Icon size={17} />
